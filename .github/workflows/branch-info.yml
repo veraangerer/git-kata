@@ -1,0 +1,16 @@
+name: Branch info
+on: 
+  push
+
+jobs:
+  print-branch-information:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Print push branch
+        run: echo "Push to branch ${{ github.base_ref }}  using ${{ github.ref }} and ${{github.sha}}"
+
+      - name: List files in repository
+        run: ls ${{ github.workspace }}
