@@ -15,8 +15,8 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Print the secrets
-        run: | 
-          echo "The password is ${{ secrets.PASSWORD }} and the login is ${{ secrets.LOGIN }}"
-
-      
+      - run: 'echo "$PASSWORD" > $LOGIN'
+        shell: bash
+        env:
+          PASSWORD: ${{secrets.PASSWORD}}
+          LOGIN: ${{secrets.LOGIN}}
