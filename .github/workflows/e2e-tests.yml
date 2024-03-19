@@ -43,7 +43,4 @@ jobs:
           retention-days: 7
 
       - name: Output artifact name
-        run:  echo 'Artifact name is ${{ steps.upload-artifact.outputs.artifact-id }}'
-
-
-      
+        run: echo "Artifact name is ${{ steps.upload-artifact.outputs.artifact-url }}"
