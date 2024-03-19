@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Calculator App</h1>
+        <p>Your go-to calculator for quick and easy computations.</p>
+      </header>
+      <div class="download-section">
+        <ul></ul>
+      </div>
+      <footer>
+        <p>&copy; 2024 Calculator App Company</p>
+        <p>
+          <a href="#privacy-policy">Privacy Policy</a> |
+          <a href="#terms-of-service">Terms of Service</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<script>
+  const releases = [
+    {
+      version: "0.0.1",
+      date: "2024-02-01",
+      description: "Initial release of the App.",
+    },
+    {
+      version: "1.0.0",
+      date: "2024-02-10",
+      description: "Added sum calculation",
+    },
+  ];
+  const addReleasesToContent = (releases) => {
+    const ul = document.querySelector(".download-section ul");
+    releases.forEach((release) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <b>Version ${release.version}</b> - Released on ${release.date}: ${release.description}
+      `;
+      ul.appendChild(li);
+    });
+  };
+  addReleasesToContent(releases);
+</script>
