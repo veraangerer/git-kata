@@ -3,6 +3,8 @@ on:
   pull_request:
     branches: [main]
     types: [opened, edited, synchronize]
+    paths:
+      - 'desktop-app/**.ts'
 
 jobs:
   build-and-run-tests:
