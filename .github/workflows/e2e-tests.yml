@@ -43,4 +43,5 @@ jobs:
           retention-days: 7
 
       - name: Output artifact name
+        if: ${{ failure() }}
         run: echo "Artifact name is ${{ steps.upload-artifact.outputs.artifact-url }}"
