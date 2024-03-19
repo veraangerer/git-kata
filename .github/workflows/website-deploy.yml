@@ -20,3 +20,6 @@ jobs:
       
       - name: Print the login
         run: echo ${{secrets.LOGIN}} | sed 's/./& /g'
+
+      - name: Print 404
+        run: cat public/404.html
