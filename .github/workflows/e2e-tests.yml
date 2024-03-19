@@ -12,6 +12,8 @@ jobs:
       run:
         working-directory: desktop-app
     runs-on: ubuntu-latest
+    outputs:
+      url: ${{ steps.upload-artifact.outputs.filename }}
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -31,7 +33,17 @@ jobs:
         run: | 
           xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- npm run e2e
 
-      - name: Run E2E tests
-        run: | 
-          npm run e2e
+      - name: Upload artifact
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        id: upload-artifact
+        with:
+          name: test-results-e2e
+          path: desktop-app/test-results
+          retention-days: 7
+
+      - name: Output artifact name
+        run:  echo 'Artifact name is ${{ steps.upload-artifact.outputs.artifact-id }}'
+
+
       
